@@ -11,6 +11,8 @@ use Yii;
 use yii\db\ActiveRecord;
 use frontend\models\TestForm;
 use frontend\models\Categories;
+use frontend\models\Vacancies;
+use frontend\models\SearchForm;
 //use frontend\controllers\AppController;
 /**
  * Description of PostController
@@ -32,6 +34,23 @@ class PostController extends AppController {
     
     public function actionIndex() {
        // debug (Yii::$app->request->post());
+        $search = new SearchForm;
+        $quary = Vacancies::find();
+        $pagination = new \yii\data\Pagination(['totalCount' => $quary->count(),'pageSize' => 2, 'pageSizeParam' => false, 'forcePageParam' => false]);
+        $listvac = $quary->offset($pagination->offset)->limit($pagination->limit)->all();
+        
+        $vacancies = new Vacancies();
+         if ( $vacancies->load(Yii::$app->request->post())) {
+       if ($vacancies->save()) {
+            
+           Yii::$app->session->setFlash('success', 'Данные приняты');
+           return $this->refresh();
+       }  else {
+           Yii::$app->session->setFlash('error', 'Ошибка');     
+           }
+            
+        };
+        
         $model = new TestForm();
         
  //       $model->name = 'Вася';
@@ -50,7 +69,7 @@ class PostController extends AppController {
             
         };
        
-        return $this->render('index', compact('model'));
+        return $this->render('index', compact('model', 'vacancies', 'listvac', 'pagination', 'search'));
         
     }
     
@@ -69,11 +88,20 @@ class PostController extends AppController {
  //   $cats = Categories::find()->asArray()->where(['id' => '4'])->one();
  //    $cats = Categories::findOne(['id' => '3']);
   //  $cats = Categories::findOne(2);
-    $cats = Categories::find()->with('vacancies')->where('id=2')->all();
+  //  $cats = Categories::find()->with('vacancies')->where('id=2')->all();
+    $show = Vacancies::findOne(Yii::$app->request->get());
     
-    
-    return $this->render('show', compact('cats'));
+    return $this->render('show', compact('show'));
         
+    }
+    
+    public function actionSearch() {
+        $q = Yii::$app->request->get('q');
+        $quary = Vacancies::find()->where(['like', 'name', $q]);
+        $pagination = new \yii\data\Pagination(['totalCount' => $quary->count(),'pageSize' => 2, 'pageSizeParam' => false, 'forcePageParam' => false]);
+        $listvac = $quary->offset($pagination->offset)->limit($pagination->limit)->all();
+        
+        return $this->render('search', compact('pagination', 'listvac', 'q'));
     }
     
     }

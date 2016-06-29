@@ -8,6 +8,7 @@
 
 namespace frontend\models;
 use yii\db\ActiveRecord;
+use yii\base\Model;
 
 /**
  * Description of Vacancies
@@ -20,4 +21,22 @@ class Vacancies extends ActiveRecord {
         
         return $this->hasMany(Categories::className(), ['id' => 'category_id']);
     }
+    
+    public function attributeLabels() {
+    return [
+        'name' => 'Имя',
+         'descriprion' => 'Описание',
+         'country' => 'Страна',
+    ];
+}
+
+public function rules() {
+    return [
+        [['name','description', 'category_id', 'country'], 'required'],
+        
+      //  ['name', 'string', 'min' => 2],
+       // [['name','email'], 'required', 'message' => 'Поле обязательно для заполнения' ], 
+       
+    ];
+}
 }
