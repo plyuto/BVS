@@ -13,6 +13,7 @@ use frontend\models\TestForm;
 use frontend\models\Categories;
 use frontend\models\Vacancies;
 use frontend\models\SearchForm;
+use yii\helpers\Html;
 //use frontend\controllers\AppController;
 /**
  * Description of PostController
@@ -21,8 +22,19 @@ use frontend\models\SearchForm;
  */
 class PostController extends AppController {
     
-   // public $layout = 'basic';
-    
+ //   public $layout = 'basic';
+    public function beforeAction($action) {
+       $model = new SearchForm;
+       if ($model->load(Yii::$app->request->post())) {
+            $q = Html::encode($model->q);
+            $category = Html::encode($model->category);
+            $country = Html::encode($model->country);
+       return $this->redirect(Yii::$app->urlManager->createUrl(['post/search', ['q' => $q, 'category' => $category, 'country' => $country]]));
+        }
+        return true;
+   }
+
+
     public function actionTest() {
         $names = ['Ivanov', 'Petrov', 'Sidorov'];
    //     print_r($names);
@@ -34,7 +46,7 @@ class PostController extends AppController {
     
     public function actionIndex() {
        // debug (Yii::$app->request->post());
-        $search = new SearchForm;
+        $model = new SearchForm;
         $quary = Vacancies::find();
         $pagination = new \yii\data\Pagination(['totalCount' => $quary->count(),'pageSize' => 2, 'pageSizeParam' => false, 'forcePageParam' => false]);
         $listvac = $quary->offset($pagination->offset)->limit($pagination->limit)->all();
@@ -51,25 +63,25 @@ class PostController extends AppController {
             
         };
         
-        $model = new TestForm();
+   //     $model = new TestForm();
         
  //       $model->name = 'Вася';
  //        $model->email = 'mail@mail.ru';
  //         $model->text = 'Текст поста здесь будет';
  //         $model->save();
               
-        if ( $model->load(Yii::$app->request->post())) {
-       if ($model->save()) {
+//        if ( $model->load(Yii::$app->request->post())) {
+ //      if ($model->save()) {
             
-           Yii::$app->session->setFlash('success', 'Данные приняты');
-           return $this->refresh();
-       }  else {
-           Yii::$app->session->setFlash('error', 'Ошибка');     
-           }
+ //          Yii::$app->session->setFlash('success', 'Данные приняты');
+ //          return $this->refresh();
+ //      }  else {
+ //          Yii::$app->session->setFlash('error', 'Ошибка');     
+ //          }
             
-        };
+   //     };
        
-        return $this->render('index', compact('model', 'vacancies', 'listvac', 'pagination', 'search'));
+        return $this->render('index', compact('model', 'vacancies', 'listvac', 'pagination'));
         
     }
     
@@ -96,12 +108,25 @@ class PostController extends AppController {
     }
     
     public function actionSearch() {
-        $q = Yii::$app->request->get('q');
-        $quary = Vacancies::find()->where(['like', 'name', $q]);
-        $pagination = new \yii\data\Pagination(['totalCount' => $quary->count(),'pageSize' => 2, 'pageSizeParam' => false, 'forcePageParam' => false]);
+      //  $q = Yii::$app->getRequest()->getQueryParam('q');
+     //   $country = Yii::$app->getRequest()->getQueryParam('country');
+     //   $category = Yii::$app->getRequest()->getQueryParam('category');
+      //   $country = Yii::$app->request->get('country');
+      //   $category = Yii::$app->request->get('category');
+        
+        $q = Yii::$app->request->get(1);
+      
+        $category = $q['category'];
+        $country = $q['country'];
+       // $q = $q[1]['q'];
+       $q = $q['q'];
+     
+    $quary = Vacancies::find()->where(['like', 'name', $q])->andWhere(['country' => $country])/*->andWhere(['category_id' => $category])/*->where(['category_id' => $category])/*->where(['like', 'category_id', $category])->where(['like', 'country', $country])*/;
+     
+    $pagination = new \yii\data\Pagination(['totalCount' => $quary->count(),'pageSize' => 2, 'pageSizeParam' => false, 'forcePageParam' => false]);
         $listvac = $quary->offset($pagination->offset)->limit($pagination->limit)->all();
         
-        return $this->render('search', compact('pagination', 'listvac', 'q'));
+        return $this->render('search', compact('pagination', 'listvac', 'q', 'country', 'category', 'model'));
     }
     
     }

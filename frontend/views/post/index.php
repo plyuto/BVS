@@ -1,8 +1,12 @@
 <?php
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
+use frontend\models\SearchForm;
+
+$model = new SearchForm;
 ?>
-<?php debug ($search); ?>
+
+<?php // $SearchForm['q']; ?>
 <?php if (Yii::$app->session->hasFlash('session')) : ?>
 <?php echo (Yii::$app->session->getFlash('session')); ?>
 <?php endif; ?>
@@ -20,10 +24,10 @@ use yii\helpers\Html;
 <br />
 <h1>Поисковая форма через  Yii</h1>
 
-<?php $searchform = ActiveForm::begin(['action' => 'post/search'])?>
-<?= $searchform->field($search, 'q')->label('Поисковый запрос') ?>
-<?= $searchform->field($search, 'country')->label('Страна')->dropDownList(['Украина', 'Россия', 'Польша']) ?>
-<?= $searchform->field($search, 'category')->label('Категория')->dropDownList(['IT', 'Маркетинг', 'Медицина']) ?>
+<?php $form = ActiveForm::begin(/*['action' => yii\helpers\Url::to('post/search'), 'method' => 'get']*/)?>
+<?= $form->field($model, 'q')->label('Поисковый запрос') ?>
+<?=  $form->field($model, 'country')->label('Страна')->dropDownList(['Украина' => 'Украина', 'Россия' => 'Россия', 'Польша' => 'Польша', 'Венгрия' => 'Венгрия']) ?>
+<?= $form->field($model, 'category')->label('Категория')->dropDownList(['IT' => 'IT', 'Маркетинг' => 'Маркетинг', 'Медицина']) ?>
 <?= Html::submitButton('Отправить', ['class' => 'btn btn-success'] ) ?>
 <?php ActiveForm::end()?>
 
@@ -57,10 +61,10 @@ use yii\helpers\Html;
 
 <h1>Добавить тестовый Пост</h1>
 
-<?php $form = ActiveForm::begin(['options' => ['id' => 'testForm']])?>
-<?= $form->field($model, 'name')->label('Имя') ?>
-<?= $form->field($model, 'email') ?>
-<?= $form->field($model, 'text')->label('Текст Сообщения')->textarea(['rows' => 5]) ?>
-<?= Html::submitButton('Отправить', ['class' => 'btn btn-success'] ) ?>
-<?php ActiveForm::end()?>
+<?php //$form = ActiveForm::begin(['options' => ['id' => 'testForm']])?>
+<?php // $form->field($model, 'name')->label('Имя') ?>
+<?php // $form->field($model, 'email') ?>
+<?php // $form->field($model, 'text')->label('Текст Сообщения')->textarea(['rows' => 5]) ?>
+<?php // Html::submitButton('Отправить', ['class' => 'btn btn-success'] ) ?>
+<?php // ActiveForm::end()?>
 

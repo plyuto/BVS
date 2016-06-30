@@ -17,6 +17,16 @@ use yii\base\Model;
 class SearchForm extends Model{
     //put your code here
     public $q;
-    public $category;
-    public $country;
+   public $category;
+   public $country;
+    
+    public function rules() {
+    return [
+        [['q', 'category', 'country'], 'required'],
+        
+      //  ['name', 'string', 'min' => 2],
+       // [['name','email'], 'required', 'message' => 'Поле обязательно для заполнения' ], 
+       
+    ];
+}
 }
