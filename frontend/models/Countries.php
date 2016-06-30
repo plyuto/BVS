@@ -8,23 +8,16 @@
 
 namespace frontend\models;
 use yii\db\ActiveRecord;
+
 /**
- * Description of Category
+ * Description of Countries
  *
  * @author artem
  */
-class Categories extends ActiveRecord{
-   
-    public function getVacancies () {
-        
-        return $this->hasMany(Vacancies::className(), ['category_id' => 'id']);
-    }
-    //   public static function tableName() {
-   //     return 'categories';
-    //}
-     public function rules() {
+class Countries extends ActiveRecord {
+   public function rules() {
     return [
-        ['category_name', 'required'],
+        ['country', 'required'],
         ['id', 'save'],
         
       //  ['name', 'string', 'min' => 2],

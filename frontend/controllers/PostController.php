@@ -47,6 +47,7 @@ class PostController extends AppController {
     public function actionIndex() {
        // debug (Yii::$app->request->post());
         $model = new SearchForm;
+        $search_cat = Categories::find()->asArray()->all();
         $quary = Vacancies::find();
         $pagination = new \yii\data\Pagination(['totalCount' => $quary->count(),'pageSize' => 2, 'pageSizeParam' => false, 'forcePageParam' => false]);
         $listvac = $quary->offset($pagination->offset)->limit($pagination->limit)->all();
@@ -64,15 +65,12 @@ class PostController extends AppController {
         };
         
    //     $model = new TestForm();
-        
- //       $model->name = 'Вася';
+//       $model->name = 'Вася';
  //        $model->email = 'mail@mail.ru';
  //         $model->text = 'Текст поста здесь будет';
- //         $model->save();
-              
+ //         $model->save();             
 //        if ( $model->load(Yii::$app->request->post())) {
- //      if ($model->save()) {
-            
+ //      if ($model->save()) {           
  //          Yii::$app->session->setFlash('success', 'Данные приняты');
  //          return $this->refresh();
  //      }  else {
@@ -81,7 +79,7 @@ class PostController extends AppController {
             
    //     };
        
-        return $this->render('index', compact('model', 'vacancies', 'listvac', 'pagination'));
+        return $this->render('index', compact('model', 'vacancies', 'listvac', 'pagination', 'search_cat'));
         
     }
     

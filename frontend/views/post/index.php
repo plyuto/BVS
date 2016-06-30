@@ -3,7 +3,8 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use frontend\models\SearchForm;
 
-$model = new SearchForm;
+$drop = ['Украина' => 'Украин', 'россия' => 'россия'];
+$search_cat = \yii\helpers\ArrayHelper::map($search_cat, 'id', 'category_name' );
 ?>
 
 <?php // $SearchForm['q']; ?>
@@ -26,7 +27,7 @@ $model = new SearchForm;
 
 <?php $form = ActiveForm::begin(/*['action' => yii\helpers\Url::to('post/search'), 'method' => 'get']*/)?>
 <?= $form->field($model, 'q')->label('Поисковый запрос') ?>
-<?=  $form->field($model, 'country')->label('Страна')->dropDownList(['Украина' => 'Украина', 'Россия' => 'Россия', 'Польша' => 'Польша', 'Венгрия' => 'Венгрия']) ?>
+<?=  $form->field($model, 'country')->label('Страна')->dropDownList($search_cat) ?>
 <?= $form->field($model, 'category')->label('Категория')->dropDownList(['IT' => 'IT', 'Маркетинг' => 'Маркетинг', 'Медицина']) ?>
 <?= Html::submitButton('Отправить', ['class' => 'btn btn-success'] ) ?>
 <?php ActiveForm::end()?>
@@ -60,7 +61,7 @@ $model = new SearchForm;
 <?php ActiveForm::end()?>
 
 <h1>Добавить тестовый Пост</h1>
-
+<?php debug($search_cat)?>
 <?php //$form = ActiveForm::begin(['options' => ['id' => 'testForm']])?>
 <?php // $form->field($model, 'name')->label('Имя') ?>
 <?php // $form->field($model, 'email') ?>
