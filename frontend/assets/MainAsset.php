@@ -21,6 +21,7 @@ class MainAsset extends AssetBundle {
         'source/css/animate-custom.css',
         'source/css/icomoon.css',
         'source/css/main.css',
+        'source/css/custom.css',
         
     ];
     public $js = [

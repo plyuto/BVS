@@ -17,7 +17,7 @@ use yii\db\ActiveRecord;
 class Countries extends ActiveRecord {
    public function rules() {
     return [
-        ['country', 'required'],
+        ['country', 'save'],
         ['id', 'save'],
         
       //  ['name', 'string', 'min' => 2],

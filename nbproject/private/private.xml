@@ -3,15 +3,49 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/assets/MainAsset.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/components/views/search.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/models/ContactForm.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/common/config/params.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/models/Countries.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/web/.htaccess</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/.htaccess</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/models/Vacancies.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/views/post/search.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/config/main-local.php</file>
             <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/modules/main/Module.php</file>
-            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/views/site/contact.php</file>
-            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/views/site/about.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/modules/profile/controllers/DefaultController.php</file>
             <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/controllers/SiteController.php</file>
-            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/models/SignupForm.php</file>
-            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/modules/main/views/default/index.php</file>
-            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/modules/main/controllers/DefaultController.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/config/main.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/components/SearchWidget.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/backend/views/layouts/main.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/views/layouts/basic.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/backend/controllers/SiteController.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/views/layouts/main.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/views/site/about.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/modules/profile/views/default/addvac.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/components/NavProfileWidget.php</file>
             <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/views/layouts/bootstrap.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/components/views/navprofile.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/views/post/index.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/web/source/css/main.css</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/views/post/show.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/common/config/main-local.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/models/SearchForm.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/models/SignupForm.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/modules/main/controllers/DefaultController.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/modules/profile/views/default/index.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/common/models/User.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/assets/MainAsset.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/common/config/params-local.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/views/site/contact.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/common/config/main.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/models/TestForm.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/models/Categories.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/modules/main/views/default/index.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/.htaccess</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/controllers/PostController.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/backend/controllers/AdminController.php</file>
+            <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/backend/views/admin/index.php</file>
             <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/assets/AppAsset.php</file>
             <file>file:/Users/artem/NetBeansProjects/bvs.openmall.info/frontend/controllers/MainController.php</file>
         </group>

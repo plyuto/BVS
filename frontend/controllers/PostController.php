@@ -11,6 +11,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use frontend\models\TestForm;
 use frontend\models\Categories;
+use frontend\models\Countries;
 use frontend\models\Vacancies;
 use frontend\models\SearchForm;
 use yii\helpers\Html;
@@ -23,16 +24,16 @@ use yii\helpers\Html;
 class PostController extends AppController {
     
  //   public $layout = 'basic';
-    public function beforeAction($action) {
-       $model = new SearchForm;
-       if ($model->load(Yii::$app->request->post())) {
+   public function beforeAction($action) {
+      $model = new SearchForm;
+      if ($model->load(Yii::$app->request->post())) {
             $q = Html::encode($model->q);
             $category = Html::encode($model->category);
             $country = Html::encode($model->country);
        return $this->redirect(Yii::$app->urlManager->createUrl(['post/search', ['q' => $q, 'category' => $category, 'country' => $country]]));
         }
-        return true;
-   }
+       return true;
+  }
 
 
     public function actionTest() {
@@ -48,8 +49,9 @@ class PostController extends AppController {
        // debug (Yii::$app->request->post());
         $model = new SearchForm;
         $search_cat = Categories::find()->asArray()->all();
-        $quary = Vacancies::find();
-        $pagination = new \yii\data\Pagination(['totalCount' => $quary->count(),'pageSize' => 2, 'pageSizeParam' => false, 'forcePageParam' => false]);
+        $search_country = Countries::find()->asArray()->all();
+       $quary = Vacancies::find()->orderBy(['id' => SORT_DESC]);
+        $pagination = new \yii\data\Pagination(['totalCount' => $quary->count(),'pageSize' => 5, 'pageSizeParam' => false, 'forcePageParam' => false]);
         $listvac = $quary->offset($pagination->offset)->limit($pagination->limit)->all();
         
         $vacancies = new Vacancies();
@@ -62,8 +64,10 @@ class PostController extends AppController {
            Yii::$app->session->setFlash('error', 'Ошибка');     
            }
             
-        };
+        }
         
+        $search_cat = \yii\helpers\ArrayHelper::map($search_cat, 'id', 'category_name' );
+        $search_country = \yii\helpers\ArrayHelper::map($search_country, 'id', 'country' );
    //     $model = new TestForm();
 //       $model->name = 'Вася';
  //        $model->email = 'mail@mail.ru';
@@ -79,7 +83,8 @@ class PostController extends AppController {
             
    //     };
        
-        return $this->render('index', compact('model', 'vacancies', 'listvac', 'pagination', 'search_cat'));
+        $this->layout = 'bootstrap';
+        return $this->render('index', compact('model', 'vacancies', 'listvac', 'pagination', 'search_cat', 'search_country'));
         
     }
     
@@ -101,7 +106,13 @@ class PostController extends AppController {
   //  $cats = Categories::find()->with('vacancies')->where('id=2')->all();
     $show = Vacancies::findOne(Yii::$app->request->get());
     
-    return $this->render('show', compact('show'));
+    // $search_cat = Categories::findOne($show->category_id);
+    //    $search_country = Vacancies::findOne($show->country);
+     //   $search_cat = \yii\helpers\ArrayHelper::map($search_cat, 'id', 'category_name' );
+     //   $search_country = \yii\helpers\ArrayHelper::map($search_country, 'id', 'country' );
+        
+    $this->layout = 'bootstrap';
+    return $this->render('show', compact('show', 'search_cat', 'search_country'));
         
     }
     
@@ -119,12 +130,18 @@ class PostController extends AppController {
        // $q = $q[1]['q'];
        $q = $q['q'];
      
-    $quary = Vacancies::find()->where(['like', 'name', $q])->andWhere(['country' => $country])/*->andWhere(['category_id' => $category])/*->where(['category_id' => $category])/*->where(['like', 'category_id', $category])->where(['like', 'country', $country])*/;
-     
+    $quary = Vacancies::find()->where(['like', 'name', $q])->andFilterWhere(['country' => $country])->andFilterWhere(['category_id' => $category])/*->where(['category_id' => $category])/*->where(['like', 'category_id', $category])->where(['like', 'country', $country])*/;
+    // $links = Vacancies::find()->with('categories')->all();
     $pagination = new \yii\data\Pagination(['totalCount' => $quary->count(),'pageSize' => 2, 'pageSizeParam' => false, 'forcePageParam' => false]);
         $listvac = $quary->offset($pagination->offset)->limit($pagination->limit)->all();
+     
+       $search_cat = Categories::find()->asArray()->all();
+        $search_country = Countries::find()->asArray()->all();
+        $search_cat = \yii\helpers\ArrayHelper::map($search_cat, 'id', 'category_name' );
+        $search_country = \yii\helpers\ArrayHelper::map($search_country, 'id', 'country' );
         
-        return $this->render('search', compact('pagination', 'listvac', 'q', 'country', 'category', 'model'));
+        $this->layout = 'bootstrap';
+        return $this->render('search', compact('pagination', 'listvac', 'q', 'country', 'category', 'model', 'search_cat', 'search_country', 'quary', 'links'));
     }
     
     }

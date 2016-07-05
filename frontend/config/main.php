@@ -11,17 +11,23 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
  //   'layout' => 'basic',
+   
     'language' => 'ru',
     'controllerNamespace' => 'frontend\controllers',
     'modules' => [
-        'main' => [
+       'main' => [
             'class' => 'app\modules\main\Module',
         ],
+        'profile' => [
+            'class' => 'app\modules\profile\Module',
+        ],
     ],
+   
     'components' => [
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
+         //   'loginUrl' => 'site/login',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

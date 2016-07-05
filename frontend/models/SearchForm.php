@@ -22,7 +22,7 @@ class SearchForm extends Model{
     
     public function rules() {
     return [
-        [['q', 'category', 'country'], 'required'],
+        [['q', 'category', 'country'], 'trim'],
         
       //  ['name', 'string', 'min' => 2],
        // [['name','email'], 'required', 'message' => 'Поле обязательно для заполнения' ], 
