@@ -33,6 +33,7 @@ class Vacancies extends ActiveRecord {
 public function rules() {
     return [
         [['name','description', 'category_id', 'country', 'author'], 'required'],
+    ['data', 'safe'],
         
       //  ['name', 'string', 'min' => 2],
        // [['name','email'], 'required', 'message' => 'Поле обязательно для заполнения' ], 

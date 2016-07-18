@@ -51,7 +51,7 @@ class PostController extends AppController {
         $search_cat = Categories::find()->asArray()->all();
         $search_country = Countries::find()->asArray()->all();
        $quary = Vacancies::find()->orderBy(['id' => SORT_DESC]);
-        $pagination = new \yii\data\Pagination(['totalCount' => $quary->count(),'pageSize' => 5, 'pageSizeParam' => false, 'forcePageParam' => false]);
+        $pagination = new \yii\data\Pagination(['totalCount' => $quary->count(),'pageSize' => 10, 'pageSizeParam' => false, 'forcePageParam' => false]);
         $listvac = $quary->offset($pagination->offset)->limit($pagination->limit)->all();
         
         $vacancies = new Vacancies();
@@ -82,9 +82,9 @@ class PostController extends AppController {
  //          }
             
    //     };
-       
+       $data = date('d-M-Y');
         $this->layout = 'bootstrap';
-        return $this->render('index', compact('model', 'vacancies', 'listvac', 'pagination', 'search_cat', 'search_country'));
+        return $this->render('index', compact('data','model', 'vacancies', 'listvac', 'pagination', 'search_cat', 'search_country'));
         
     }
     

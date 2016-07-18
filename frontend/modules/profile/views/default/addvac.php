@@ -15,6 +15,7 @@ $author = Yii::$app->user->identity->username;
 
 <?php $formvac = ActiveForm::begin(['options' => ['id' => 'vacancies']])?>
     <?= $formvac->field($vacancies, 'author')->label('')->hiddenInput(['value' => $author]) ?>
+   
 <?= $formvac->field($vacancies, 'name')->label('Заголовок') ?>
 <?= $formvac->field($vacancies, 'country')->dropDownList($search_country) ?>
 <?= $formvac->field($vacancies, 'description')->label('Текст Сообщения')->textarea(['rows' => 5]) ?>

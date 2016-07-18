@@ -27,6 +27,7 @@ class DefaultController extends Controller
         return $this->render('index', compact('pagination', 'listvac', 'author', 'quary'));
     }
     public function actionAddVac () {
+        $curdata = Yii::$app->formatter->asDate('now', 'php:d-m-Y');
         $search_cat = Categories::find()->asArray()->all();
         $search_country = Countries::find()->asArray()->all();
         $vacancies = new Vacancies();
@@ -40,6 +41,6 @@ class DefaultController extends Controller
            }
             
         }
-        return $this->render('addvac', compact('vacancies', 'search_cat', 'search_country'));
+        return $this->render('addvac', compact('vacancies', 'search_cat', 'search_country', 'curdata'));
     }
 }

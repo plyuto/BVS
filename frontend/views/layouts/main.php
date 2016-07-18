@@ -28,7 +28,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'BVS.ua',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -37,7 +37,7 @@ AppAsset::register($this);
     if (!Yii::$app->user->isGuest) {
     $menuItems[] = ['label' => 'Профиль', 'url' => ['/profile']];} 
     $menuItems = [
-        ['label' => 'Домой', 'url' => ['/site/index']],
+        ['label' => 'Домой', 'url' => ['/']],
         ['label' => 'Вакансии', 'url' => ['/post/index']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
@@ -50,7 +50,7 @@ AppAsset::register($this);
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                'Выйти (' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link']
             )
             . Html::endForm()

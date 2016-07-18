@@ -8,6 +8,7 @@ use frontend\models\SearchForm;
 //$search_country = \yii\helpers\ArrayHelper::map($search_country, 'id', 'country' );
 ?>
 
+
 <?php if (Yii::$app->session->hasFlash('session')) : ?>
 <?php echo (Yii::$app->session->getFlash('session')); ?>
 <?php endif; ?>
@@ -51,6 +52,36 @@ use frontend\models\SearchForm;
 -->
 
 <div class="container">
+    <div class="section-title-block">
+				<h3 class="section-title">Список последних Вакансий</h3>
+                                
+				
+			</div>
+<div class="owl-carousel">
+    <?php if ( !empty($listvac)) : ?>
+<?php foreach ($listvac as $vac): ?>
+  <div class="blog-content">
+							<ul class="post-meta">
+								<li><span class="fa fa-user"></span> <a href="#"><?= $search_country[$vac->country] ?></a></li>
+								<li><span class="fa fa-clock-o"></span> <a href="#"> <?= Yii::$app->formatter->asDate($vac->data, 'php:d-m-Y'); // 2014-10-06?> </a></li>
+							</ul>
+							<h4><a href="<?= yii\helpers\Url::to(['post/show', 'id' => $vac->id])?>"><?=$vac->name?></a></h4>
+
+
+							<p>
+								<?=$vac->description?>
+							</p>
+							<footer class="clearfix">
+								<a class="post-category" href="#"><?= $search_cat[$vac->category_id] ?></a>
+								<a class="read-more-link" href="<?= yii\helpers\Url::to(['post/show', 'id' => $vac->id])?>">Подробнее »</a>
+							</footer>
+						</div>
+    <?php endforeach; ?>
+    <?php endif; ?>
+
+</div>
+    </div>
+                                <div class="container">
     <h1>Список всех Вакансий</h1>
 <?php if ( !empty($listvac)) : ?>
 <?php foreach ($listvac as $vac): ?>
@@ -89,4 +120,5 @@ use frontend\models\SearchForm;
 <?php // $form->field($model, 'text')->label('Текст Сообщения')->textarea(['rows' => 5]) ?>
 <?php // Html::submitButton('Отправить', ['class' => 'btn btn-success'] ) ?>
 <?php // ActiveForm::end()?>
+
 
