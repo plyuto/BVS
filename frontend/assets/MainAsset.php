@@ -18,13 +18,14 @@ class MainAsset extends AssetBundle {
     public $baseUrl = '@web';
     public $css = [
        // 'css/site.css',
-      //  'source/css/font-awesome.min.css',
+        
         'source/css/animate-custom.css',
         'source/css/icomoon.css',
         'source/css/main.css',
         'source/css/custom.css',
         'source/css/owl.carousel.css',
         'source/css/owl.theme.default.css',
+        'source/css/font-awesome.css',
         //'source/css/style2.css',
     ];
     public $js = [

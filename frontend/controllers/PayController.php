@@ -11,12 +11,43 @@ use frontend\models\Billing_Users;
 use Yii;
 use yii\web\IdentityInterface;
 use common\models\User;
+use yii\filters\AccessControl;
+use \yii\filters\VerbFilter;
 /**
  * Description of PayController
  *
  * @author artem
  */
 class PayController extends AppController {
+    
+     public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['payment'],
+                'rules' => [
+                  
+                    [
+                        'actions' => [''],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'actions' => ['payment'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post'],
+                ],
+            ],
+        ];
+    }
     
     public function beforeAction($action) {
         if ($action->id == 'result') {

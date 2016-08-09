@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use frontend\models\Countries;
+use app\models\User;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -11,9 +11,9 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
- * CountryController implements the CRUD actions for Countries model.
+ * UserController implements the CRUD actions for User model.
  */
-class CountryController extends Controller
+class UserController extends Controller
 {
     /**
      * @inheritdoc
@@ -47,13 +47,13 @@ class CountryController extends Controller
     }
 
     /**
-     * Lists all Countries models.
+     * Lists all User models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Countries::find(),
+            'query' => User::find(),
         ]);
 
         return $this->render('index', [
@@ -62,7 +62,7 @@ class CountryController extends Controller
     }
 
     /**
-     * Displays a single Countries model.
+     * Displays a single User model.
      * @param integer $id
      * @return mixed
      */
@@ -74,13 +74,13 @@ class CountryController extends Controller
     }
 
     /**
-     * Creates a new Countries model.
+     * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Countries();
+        $model = new User();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -92,7 +92,7 @@ class CountryController extends Controller
     }
 
     /**
-     * Updates an existing Countries model.
+     * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -111,7 +111,7 @@ class CountryController extends Controller
     }
 
     /**
-     * Deletes an existing Countries model.
+     * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -124,15 +124,15 @@ class CountryController extends Controller
     }
 
     /**
-     * Finds the Countries model based on its primary key value.
+     * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Countries the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Countries::findOne($id)) !== null) {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

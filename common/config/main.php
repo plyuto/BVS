@@ -11,6 +11,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
              'rules' => [
+                 
                  [
                  'pattern' => '',
                  'route' => 'post/index'

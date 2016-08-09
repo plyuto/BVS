@@ -7,6 +7,8 @@ use frontend\models\Vacancies;
 use Yii;
 use frontend\models\Categories;
 use frontend\models\Countries;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 
 /**
  * Default controller for the `profile` module
@@ -17,6 +19,34 @@ class DefaultController extends Controller
      * Renders the index view for the module
      * @return string
      */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index', 'add-vac', ''],
+                'rules' => [
+                    [
+                        'actions' => [''],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'actions' => ['add-vac', 'index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post'],
+                ],
+            ],
+        ];
+    }
+    
     public function actionIndex()
     {
         $author = Yii::$app->user->identity->username;

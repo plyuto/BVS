@@ -50,10 +50,10 @@ use frontend\models\SearchForm;
 <? //Html::submitButton('Отправить', ['class' => 'btn btn-success'] ) ?>
 <?php //ActiveForm::end()?>
 -->
-
+<br><br>
 <div class="container">
     <div class="section-title-block">
-				<h3 class="section-title">Список последних Вакансий</h3>
+				<h3 class="section-title">Последние Добавленные Вакансии</h3>
                                 
 				
 			</div>
@@ -62,8 +62,8 @@ use frontend\models\SearchForm;
 <?php foreach ($listvac as $vac): ?>
   <div class="blog-content">
 							<ul class="post-meta">
-								<li><span class="fa fa-user"></span> <a href="#"><?= $search_country[$vac->country] ?></a></li>
-								<li><span class="fa fa-clock-o"></span> <a href="#"> <?= Yii::$app->formatter->asDate($vac->data, 'php:d-m-Y'); // 2014-10-06?> </a></li>
+								<li><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> <a href="#"><?= $search_country[$vac->country] ?></a></li>
+								<li><span class="glyphicon glyphicon-time"></span> <a href="#"> <?= Yii::$app->formatter->asDate($vac->data, 'php:d-m-Y'); // 2014-10-06?> </a></li>
 							</ul>
 							<h4><a href="<?= yii\helpers\Url::to(['post/show', 'id' => $vac->id])?>"><?=$vac->name?></a></h4>
 
@@ -72,7 +72,7 @@ use frontend\models\SearchForm;
 								<?=$vac->description?>
 							</p>
 							<footer class="clearfix">
-								<a class="post-category" href="#"><?= $search_cat[$vac->category_id] ?></a>
+                                                            <a class="post-category" href="#"><span class="glyphicon glyphicon-tasks" style="margin-right: 10px;"></span><?= $search_cat[$vac->category_id] ?></a>
 								<a class="read-more-link" href="<?= yii\helpers\Url::to(['post/show', 'id' => $vac->id])?>">Подробнее »</a>
 							</footer>
 						</div>
@@ -81,6 +81,7 @@ use frontend\models\SearchForm;
 
 </div>
     </div>
+<br>
                                 <div class="container">
     <h1>Список всех Вакансий</h1>
 <?php if ( !empty($listvac)) : ?>

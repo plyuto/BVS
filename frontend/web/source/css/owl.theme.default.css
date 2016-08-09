@@ -1,6 +1,7 @@
 /* 
  * 	Default theme - Owl Carousel CSS File
  */
+
 .owl-theme .owl-nav {
   margin-top: 10px;
   text-align: center;
@@ -10,14 +11,14 @@
     font-size: 14px;
     margin: 5px;
     padding: 4px 7px;
-    background: #D6D6D6;
+    background: #3baafe;
     display: inline-block;
     cursor: pointer;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px; }
     .owl-theme .owl-nav [class*='owl-']:hover {
-      background: #869791;
+      background: #4cae4c;
       color: #FFF;
       text-decoration: none; }
   .owl-theme .owl-nav .disabled {
@@ -55,6 +56,7 @@
     padding-top: 1px;
     border-left: 1px solid #e6e6e6;
     border-right: 1px solid #e6e6e6;
+    background: #fafafa;
 }
 
 .blog-content .post-meta {
@@ -96,10 +98,14 @@
   transition: .3s;
   text-transform: uppercase;
   line-height: 1.5;
+  font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
 }
 .blog-content h4 a {
   color: #333333;
   transition: .3s;
+  
 }
 .blog-content h4:hover a {
   color: #0186eb;
@@ -119,8 +125,12 @@
   /*  white-space: nowrap; /* Запрещаем перенос строк */
     overflow: hidden; /* Обрезаем все, что не помещается в область */
   /* background: #fc0; /* Цвет фона */
-   height: 130px;
-    text-overflow: ellipsis; /* Добавляем многоточие */
+   height: 140px;
+  /*  text-overflow: ellipsis; /* Добавляем многоточие */
+    font-size: 14px;
+    line-height: 24px;
+    color: #999999;
+    font-family: 'Source Sans Pro', sans-serif;
    
 }
 .blog-content footer {
@@ -137,6 +147,7 @@
   font-size: 13px;
   float: left;
   transition: .3s;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 .blog-content footer .post-category:hover {
   color: #0186eb;
@@ -147,6 +158,7 @@
   font-size: 13px;
   float: right;
   transition: .3s;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 .blog-content footer .read-more-link:hover {
   color: #0186eb;

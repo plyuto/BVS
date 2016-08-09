@@ -12,9 +12,10 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
+   // 'defaultRoute' => 'site/index',
     'components' => [
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'app\models\Usersingupadmin',
             'enableAutoLogin' => true,
         ],
         'log' => [
@@ -29,14 +30,19 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '' => 'site/index',
+                '<action>'=>'site/<action>',
             ],
         ],
-        */
+        'request' => [
+            'baseUrl' => '/admin',
+        ]
+        
     ],
     'params' => $params,
 ];

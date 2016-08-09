@@ -16,6 +16,7 @@ use yii\bootstrap\Alert;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="SHIELD - Free Bootstrap 3 Theme">
     <meta name="author" content="Carlos Alvarez - Alvarez.is - blacktie.co">
+    
     <link rel="shortcut icon" href="assets/ico/favicon.png">
 <?= Html::csrfMetaTags() ?>
     
@@ -28,6 +29,7 @@ use yii\bootstrap\Alert;
     
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CSource+Sans+Pro:400,400italic,700" rel="stylesheet" type="text/css">
 
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -59,18 +61,17 @@ use yii\bootstrap\Alert;
     $menuItems = [
         ['label' => 'Домой', 'url' => ['/site/index']],
         ['label' => 'Вакансии', 'url' => ['/post/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => 'Регистрация', 'url' => ['/site/signup']];
+        $menuItems[] = ['label' => 'Вход', 'url' => ['/site/login']];
     } else {
         $menuItems[] = ['label' => 'Профиль', 'url' => ['/profile']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                'Выйти (' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link']
             )
             . Html::endForm()
